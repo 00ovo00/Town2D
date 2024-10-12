@@ -4,10 +4,10 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerInputController : CreatureController
 {
-    private Camera _camera;
+    private Camera camera;
     private void Awake()
     {
-        _camera = Camera.main;
+        camera = Camera.main;
     }
 
     public void OnMove(InputValue value)
@@ -19,7 +19,7 @@ public class PlayerInputController : CreatureController
     public void OnLook(InputValue value)
     {
         Vector2 newAim = value.Get<Vector2>();
-        Vector2 worldPos = _camera.ScreenToWorldPoint(newAim);
+        Vector2 worldPos = camera.ScreenToWorldPoint(newAim);
         newAim = (worldPos - (Vector2)transform.position).normalized;
 
         if (newAim.magnitude >= 0.9f)
